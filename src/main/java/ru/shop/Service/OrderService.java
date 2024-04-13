@@ -33,14 +33,22 @@ public class OrderService {
 
         return repository.findAll();
     }
+
     public List<Order> findByCustomer(Customer customer) {
         List<Order> result = new ArrayList<>();
-        for (Order order: repository.findAll()) {
-            if (order.getCustomerId().equals(customer.getId()) ) {
+        for (Order order : repository.findAll()) {
+            if (order.getCustomerId().equals(customer.getId())) {
                 result.add(order);
             }
         }
         return result;
     }
 
+    public long getTotalCustomerAmount(Customer customer) {
+        long sum = 0;
+        for (Order order : findByCustomer(customer)) {
+            sum += order.getAmount();
+        }
+        return sum;
+    }
 }

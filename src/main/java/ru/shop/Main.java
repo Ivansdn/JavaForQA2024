@@ -41,6 +41,13 @@ public class Main {
         Customer alex = new Customer(UUID.randomUUID(), "Alexander", "99999", 48);
         customerService.save(alex);
         System.out.println("-- ALL CUSTOMERS --");
+
+
+        orderService.add(vlad, bmw, 2);
+        orderService.add(ivan, ladakalina, 5);
+        orderService.add(alex, carWashing, 1);
+
+
         for (Customer customer : customerService.findAll()) {
             System.out.println(customer);
         }
@@ -53,8 +60,10 @@ public class Main {
         for (Order order : orderService.findByCustomer(alex)) {
             System.out.println("order");
         }
-
-
+        System.out.println("customer count: " + customerService.findAll().size());
+        System.out.println("order count = " + orderService.findAll().size());
+        for (Order order : orderService.findByCustomer(alex)) {
+            System.out.println(orderService.findByCustomer(ivan) + "total sum = " + orderService.getTotalCustomerAmount(ivan));
+        }
     }
-
 }
