@@ -25,7 +25,7 @@ public class ProductReturnController {
 
     @GetMapping("/{id}")
     public ProductReturn getById(@PathVariable UUID id) {
-        return productReturnServices.getById(id);
+        return productReturnServices.findById(id);
     }
 
 }
