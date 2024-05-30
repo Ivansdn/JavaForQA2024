@@ -23,8 +23,7 @@ import static org.mockito.Mockito.when;
 public class ProductReturnServiceTest {
 
     private final ProductReturnRepository repository = Mockito.mock(ProductReturnRepository.class);
-    private final OrderService orderService = Mockito.mock(OrderService.class);
-    private final ProductReturnService productReturnService = new ProductReturnService(repository, orderService);
+    private final ProductReturnService productReturnService = new ProductReturnService(repository);
 
 
     @Test
