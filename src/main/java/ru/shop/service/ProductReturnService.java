@@ -21,8 +21,8 @@ public class ProductReturnService {
     private final OrderService orderService;
 
     public void add(Order order, int count) {
-        Order initialOrder = orderService.getById(order.getId());
-        if (initialOrder.getCount() < count) {
+
+        if (order.getCount() < count) {
             throw new BadProductReturnCountException();
         }
         ProductReturn productReturn = new ProductReturn(UUID.randomUUID(),order.getId(), LocalDate.now(),count);
